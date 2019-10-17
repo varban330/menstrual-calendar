@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework_expiring_authtoken',
     'corsheaders',
     'auth_app.apps.AuthAppConfig',
+    'social_django',
 ]
 
 REST_FRAMEWORK = {
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'period_calendar.urls'
@@ -73,7 +75,9 @@ CORS_ALLOW_CREDENTIALS = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+             os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,6 +85,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.login_redirect', # <--
             ],
         },
     },
@@ -122,6 +129,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
