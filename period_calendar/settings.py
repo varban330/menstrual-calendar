@@ -26,7 +26,7 @@ SECRET_KEY = 'th5u+gm7wv71c$dty*d)#q3)7-bn+)rixe-my)81x-9#mmd5h2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['menstrual-calendar.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -93,8 +93,12 @@ WSGI_APPLICATION = 'period_calendar.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd8ms7sbaq6sl7a',
+        'USER': 'llccfngehkzasj',
+        'PASSWORD': 'c84157799c5f8d9beed8af3ef54ba1a362c0edcb7e57d78e6756c5ff4931ca8b',
+        'HOST':'ec2-174-129-210-249.compute-1.amazonaws.com',
+        'PORT':'5432'
     }
 }
 
