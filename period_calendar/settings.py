@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_expiring_authtoken',
     'corsheaders',
+    'auth_app.apps.AuthAppConfig',
 ]
 
 REST_FRAMEWORK = {
