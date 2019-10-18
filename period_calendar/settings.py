@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'rest_framework_expiring_authtoken',
     'corsheaders',
     'auth_app.apps.AuthAppConfig',
+    'frontend.apps.FrontendConfig',
     'social_django',
+    'widget_tweaks',
 ]
 
 REST_FRAMEWORK = {
@@ -75,9 +77,7 @@ CORS_ALLOW_CREDENTIALS = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-             os.path.join(BASE_DIR, 'templates'),
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

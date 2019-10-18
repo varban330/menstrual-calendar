@@ -25,5 +25,7 @@ urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),
     # /login/
     path('login/', views.LoginView.as_view(), name='login'),
+    # Front end urls
+    path('', include('frontend.urls')),
 
 ]
