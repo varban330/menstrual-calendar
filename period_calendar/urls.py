@@ -21,10 +21,10 @@ from auth_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # /register/
-    path('register/', views.RegisterView.as_view(), name='register'),
-    # /login/
-    path('login/', views.LoginView.as_view(), name='login'),
+    # /api/register/
+    path('api/register/', views.RegisterView.as_view(), name='register'),
+    # /api/login/
+    path('api/login/', views.LoginView.as_view(), name='login'),
     # Front end urls
     path('', include('frontend.urls')),
 
