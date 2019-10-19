@@ -1,3 +1,13 @@
+function password_validation(){
+  var password = document.getElementById("password").value;
+  if(password.length < 8){
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+
 function passwordcheck(){
   var password = document.getElementById("password").value;
   var repassword = document.getElementById("repassword").value;
@@ -26,6 +36,11 @@ function register(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     var repassword = document.getElementById("repassword").value;
+
+    if(password_validation() == false){
+      snackbarfunc("Passwords doesn't match requirements");
+      return
+    }
 
     if(passwordcheck() == false){
       snackbarfunc("Passwords don't match");

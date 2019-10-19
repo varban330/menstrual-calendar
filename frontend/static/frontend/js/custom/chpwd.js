@@ -1,3 +1,15 @@
+function password_validation(){
+  var password = document.getElementById("newpassword").value;
+  var btn = document.getElementById("chpwdbtn")
+  if(password.length < 8){
+    btn.disabled = true;
+    return false;
+  }
+  else{
+    btn.disabled = false;
+    return true;
+  }
+}
 function passwordcheck(){
   var password = document.getElementById("newpassword").value;
   var repassword = document.getElementById("repassword").value;

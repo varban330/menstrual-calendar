@@ -27,8 +27,8 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating">New Password</label>
-                      <input type="password" class="form-control" id = "newpassword">
+                      <label class="bmd-label-floating">New Password (Password should be of more than 7 characters)</label>
+                      <input type="password" class="form-control" id = "newpassword" onchange="password_validation()">
                     </div>
                   </div>
                 </div>
@@ -40,7 +40,7 @@
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary pull-right">Update Password</button>
+                <button type="submit" class="btn btn-primary pull-right" id = "chpwdbtn">Update Password</button>
                 <div class="clearfix"></div>
               </form>
             </div>
