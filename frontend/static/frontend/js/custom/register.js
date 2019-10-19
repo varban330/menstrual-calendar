@@ -28,7 +28,8 @@ function register(){
     var repassword = document.getElementById("repassword").value;
 
     if(passwordcheck() == false){
-
+      snackbarfunc("Passwords don't match");
+      return
     }
 
     var url = document.getElementById("loginbutton").getAttribute('data-url');
@@ -62,6 +63,12 @@ function register(){
       },
       body: JSON.stringify(myData)
     }).then(function(response) {
+      if(response.status == 200){
+        snackbarfunc("Registration Successful")
+      }
+      else{
+        snackbarfunc("Fill all Details Correctly")
+      }
       return response.json();
     }).then(function(data) {
       console.log("Data is ok", data);
@@ -69,4 +76,15 @@ function register(){
       console.log("parsing failed", ex);
       console.log(url)
     });
+}
+
+function snackbarfunc(string) {
+  // Get the snackbar DIV
+  var x = document.getElementById("snackbar");
+  x.innerHTML = string
+  // Add the "show" class to DIV
+  x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
