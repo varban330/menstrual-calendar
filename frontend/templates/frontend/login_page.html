@@ -39,7 +39,7 @@
                       <i class="material-icons">face</i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Name...">
+                  <input type="text" class="form-control" id = "username" placeholder="Username...">
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -47,12 +47,12 @@
                       <i class="material-icons">lock_outline</i>
                     </span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Password...">
+                  <input type="password" class="form-control" id = "password" placeholder="Password...">
                 </div>
               </div>
               <div class="footer text-center">
                 <a href="#pablo" class="btn btn-danger btn-wd btn-lg">Sign In with &nbsp;<i class="fa fa-google-plus"></i></a>
-                <a href="#pablo" class="btn btn-success btn-wd btn-lg">Let's Go...</a>
+                <a onclick="login()" data-url = "{% url 'login' %}" id="loginbutton" class="btn btn-success btn-wd btn-lg">Let's Go...</a>
               </div>
             </form>
           </div>
@@ -91,5 +91,7 @@
     }
 
   </script>
+  <!-- Custom JS -->
+    <script src="{% static 'frontend/js/custom/login.js' %}" type="text/javascript"></script>
   </body>
 </html>

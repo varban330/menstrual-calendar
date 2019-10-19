@@ -27,8 +27,6 @@ class RegisterView(APIView):
         try:
             user = User()
             # cleaned (normalised) data
-            user.first_name = request.data['first_name']
-            user.last_name = request.data['last_name']
             user.username = request.data['username']
             user.email = request.data['email']
             pwd = request.data['password']
