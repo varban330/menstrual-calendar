@@ -93,7 +93,7 @@ function change_password(){
         md.showNotification('top','center', 'success', "Password Change Successful")
       }
       else{
-        md.showNotification('top','center', 'danger', "Please Try Again Later")
+        md.showNotification('top','center', 'danger', "Incorrect Password Entered")
       }
       return response.json();
     }).then(function(data) {
