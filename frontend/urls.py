@@ -7,6 +7,9 @@ urlpatterns = [
     # /register
     path('register', views.RegisterView.as_view(), name="register-page"),
 
-    # /Login
+    # /login
     path('login', views.LoginView.as_view(), name="login-page"),
+
+    # /dashboard_page
+    path('dashboard', views.DashboardView.as_view(), name="dashboard-page"),
     ]

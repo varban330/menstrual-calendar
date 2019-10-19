@@ -42,7 +42,10 @@ function login(){
       return data;
     }).then(function(obj) {
       console.log("Data is ok",obj);
-      window.localStorage.setItem('m-calendar-token', obj.token);
+      if("token" in obj){
+        window.localStorage.setItem('m-calendar-token', obj.token);
+        window.location.href = "/dashboard";
+      }
       // console.log("Data is ok",obj.status);
     }).catch(function(ex) {
       console.log("parsing failed", ex);

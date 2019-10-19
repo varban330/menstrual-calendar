@@ -14,3 +14,10 @@ class LoginView(View):
 
     def get(self,request):
         return render(request, self.template_name)
+
+
+class DashboardView(View):
+    template_name = 'frontend/dashboard.html'
+
+    def get(self,request):
+        return render(request, self.template_name)
