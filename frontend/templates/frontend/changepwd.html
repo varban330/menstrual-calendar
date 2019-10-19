@@ -20,7 +20,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating">Current Password</label>
-                      <input type="password" class="form-control">
+                      <input type="password" id="password" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -40,7 +40,7 @@
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary pull-right" id = "chpwdbtn">Update Password</button>
+                <button type="button" onclick="change_password()" data-url="{% url 'change-pwd' %}" class="btn btn-primary pull-right" id = "chpwdbtn">Update Password</button>
                 <div class="clearfix"></div>
               </form>
             </div>
