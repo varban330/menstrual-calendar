@@ -30,9 +30,8 @@ function register(){
     if(passwordcheck() == false){
 
     }
-    
+
     var url = document.getElementById("loginbutton").getAttribute('data-url');
-    console.log(url)
     function getCookie(name) {
       var cookieValue = null;
       if (document.cookie && document.cookie != '') {
