@@ -73,7 +73,7 @@ function register(){
     }).then(function(data) {
       console.log("Data is ok", data);
       if("token" in data){
-        window.localStorage.setItem('m-calendar-token', obj.token);
+        window.localStorage.setItem('m-calendar-token', data.token);
         window.location.href = "/dashboard";
       }
     }).catch(function(ex) {
