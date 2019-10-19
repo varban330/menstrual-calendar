@@ -25,6 +25,8 @@ urlpatterns = [
     path('api/register/', views.RegisterView.as_view(), name='register'),
     # /api/login/
     path('api/login/', views.LoginView.as_view(), name='login'),
+    # /api/change-pwd/
+    path('api/change-pwd/', views.ChangePwd.as_view(), name='change-pwd'),
     # Front end urls
     path('', include('frontend.urls')),
 

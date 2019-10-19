@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from .models import UserProfile
 from rest_framework_expiring_authtoken import views as rviews
 # Create your views here.
@@ -46,4 +47,25 @@ class RegisterView(APIView):
             content = {'message': string}
         return Response(data=content, status = code)
 
-# Create your views here.
+
+class ChangePwd(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+            try:
+                username = request.user.username
+                password = request.data["password"]
+                user = authenticate(username = username, password = password)
+                if user is not None:
+                    pwd = request.data['new_password']
+                    user.set_password(pwd)
+                    user.save()
+                    content = {"message: Password Changed Successfully"}
+                    code = 200
+                else:
+                    content = {"message: Incorrect Password"}
+                    code = 401
+            except:
+                content = {"message: Some Error Occured"}
+                code = 500
+            return Response(data = content, status = code)
