@@ -8,59 +8,81 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-4">
-          <div class="card card-chart">
-            <div class="card-header card-header-success">
-              <h4 class="card-title">Next Ovulation Date</h4>
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Edit Profile</h4>
+              <p class="card-category">Complete your profile</p>
             </div>
             <div class="card-body">
-              <h2 class="card-title">22 Jan</h2>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                Fertilisation Period -
-              </div>
+              <br>
+              <form>
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Username</label>
+                      <input type="text" class="form-control" disabled value="vidushiagarwal1997">
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Email address</label>
+                      <input type="email" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">First Name</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Last Name</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Period Cycle Time (default set to 28)</label>
+                      <input type="number" class="form-control" min = "1" value="28">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">General Period Duration (default set to 4)</label>
+                      <input type="number" class="form-control" min = "1" value = "4">
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                <div class="clearfix"></div>
+              </form>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card card-chart">
-            <div class="card-header card-header-warning">
-              <h4 class="card-title">Next Period Date</h4>
+          <div class="card card-profile">
+            <div class="card-avatar">
+              <a href="#pablo">
+                <img class="img" src="{% static 'frontend/assets/img/faces/marc.jpg' %}" />
+              </a>
             </div>
             <div class="card-body">
-              <h2 class="card-title">22 Jan </h2>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                Set your dates
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card-chart">
-            <div class="card-header card-header-danger">
-              <h4 class="card-title">Profile Completion</h4>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">51%</h2>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                 Complete your profile
-              </div>
+              <h4 class="card-title">Vidushi Agarwal</h4>
+              <p class="card-description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card">
-      <div class="card-header card-header-primary">
-        <h3 class="card-title">Calendar</h3>
-      </div>
-      <div class="card-body">
-      </div>
-    </div>
     </div>
   </div>
 </div>
