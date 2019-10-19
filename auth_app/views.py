@@ -69,3 +69,10 @@ class ChangePwd(APIView):
                 content = {"message: Some Error Occured"}
                 code = 500
             return Response(data = content, status = code)
+
+
+class SuccessLogin(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self,request):
+        return Response(data = {"message": "Successful"}, status = 200)
