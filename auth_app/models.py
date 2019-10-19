@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE)
-    profile_pic = models.CharField(max_length = 1000)
+    profile_pic = models.CharField(max_length = 1000, blank = True, default = '')
     cycle_time = models.IntegerField(default = 28)
     lasting_time = models.IntegerField(default = 4)
     first_login = models.BooleanField(default = True)
