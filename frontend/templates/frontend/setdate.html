@@ -8,11 +8,10 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-7">
           <div class="card">
             <div class="card-header card-header-primary">
-              <h4 class="card-title">Edit Profile</h4>
-              <p class="card-category">Complete your profile</p>
+              <h4 class="card-title">Set Dates</h4>
             </div>
             <div class="card-body">
               <br>
@@ -20,26 +19,27 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating">Current Password</label>
-                      <input type="password" class="form-control">
+                      <label class="label-control">Period Start Date</label>
+                      <input type="date" class="form-control datetimepicker">
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating">New Password</label>
-                      <input type="password" class="form-control">
+                      <label class="label-control">Period End Date</label>
+                      <input type="date" class="form-control datetimepicker">
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">Re-Enter New Password</label>
-                      <input type="password" class="form-control">
-                    </div>
-                  </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <label class="form-check-label">Currently Going On...</label>
+                    <input class="form-check-input" type="checkbox">
+                    <span class="form-check-sign">
+                      <span class="check"></span>
+                    </span>
+                  </label>
                 </div>
                 <button type="submit" class="btn btn-primary pull-right">Update Password</button>
                 <div class="clearfix"></div>
