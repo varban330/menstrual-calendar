@@ -72,6 +72,7 @@ function register(){
       return response.json();
     }).then(function(data) {
       console.log("Data is ok", data);
+      window.localStorage.setItem('m-calendar-token', data.token);
     }).catch(function(ex) {
       console.log("parsing failed", ex);
       console.log(url)

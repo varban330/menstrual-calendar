@@ -42,6 +42,7 @@ function login(){
       return data;
     }).then(function(obj) {
       console.log("Data is ok",obj);
+      window.localStorage.setItem('m-calendar-token', obj.token);
       // console.log("Data is ok",obj.status);
     }).catch(function(ex) {
       console.log("parsing failed", ex);
