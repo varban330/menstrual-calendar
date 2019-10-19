@@ -21,3 +21,24 @@ class DashboardView(View):
 
     def get(self,request):
         return render(request, self.template_name)
+
+
+class ProfileView(View):
+    template_name = 'frontend/profile.html'
+
+    def get(self,request):
+        return render(request, self.template_name)
+
+
+class ChangePwdView(View):
+    template_name = 'frontend/changepwd.html'
+
+    def get(self,request):
+        return render(request, self.template_name)
+
+
+class SetDateView(View):
+    template_name = 'frontend/setdate.html'
+
+    def get(self,request):
+        return render(request, self.template_name)

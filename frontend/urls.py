@@ -12,4 +12,13 @@ urlpatterns = [
 
     # /dashboard_page
     path('dashboard', views.DashboardView.as_view(), name="dashboard-page"),
+
+    # /profile
+    path('profile', views.ProfileView.as_view(), name="profile-page"),
+
+    # /change-pwd
+    path('change-pwd', views.ChangePwdView.as_view(), name = "pwd-page"),
+
+    # /set-date
+    path('set-date', views.SetDateView.as_view(), name="set-date-page"),
     ]
