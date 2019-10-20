@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .models import UserProfile
 from rest_framework_expiring_authtoken import views as rviews
+from .functions import upload_to_cloudinary
 # Create your views here.
 
 class LoginView(APIView):
@@ -75,4 +76,12 @@ class SuccessLogin(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self,request):
+        return Response(data = {"message": "Successful"}, status = 200)
+
+
+class UpdateProfile(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self,request):
+        print(request.data)
         return Response(data = {"message": "Successful"}, status = 200)

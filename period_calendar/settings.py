@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'frontend.apps.FrontendConfig',
     'social_django',
     'widget_tweaks',
+    'cloudinary'
 ]
 
 REST_FRAMEWORK = {
@@ -137,6 +138,8 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+# Cloudinary Config
+CLOUDINARY_URL="cloudinary://465497811255386:wmOrdnc4O_xUxcZPMjjEaBtI_O0@do8xzkgcs"
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
