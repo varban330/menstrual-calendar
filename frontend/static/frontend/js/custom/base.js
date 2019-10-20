@@ -1,3 +1,12 @@
+function load_func(){
+  logged_check()
+}
+
+function logout_func(){
+  localStorage.removeItem('m-calendar-token');
+  window.location.href = "/login";
+}
+
 function logged_check(){
   var url = "/api/logged-in/";
   function getCookie(name) {

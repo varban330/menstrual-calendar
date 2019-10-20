@@ -18,7 +18,7 @@
     <link href="{% static 'frontend/assets/css/material-dashboard.css' %}?v=2.1.1" rel="stylesheet">
   </head>
 
-  <body id="body" style="display: none;" onload="logged_check()">
+  <body id="body" style="display: none;" onload="load_func()">
     <div class="wrapper ">
       <div class="sidebar" data-color="azure" data-background-color="white" data-image="{% static 'frontend/assets/img/sidebar-1.jpg' %}">
         <div class="logo">
@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="{% url 'frontend:login-page' %}">
+              <a class="nav-link" onclick="logout_func()">
                 <i class="material-icons">exit_to_app</i>
                 <p>Logout</p>
               </a>
@@ -304,7 +304,7 @@
     <!-- Custom JS -->
     <script src="{% static 'frontend/js/custom/dashboard.js' %}" type="text/javascript"></script>
     <script src="{% static 'frontend/js/custom/chpwd.js' %}" type="text/javascript"></script>
-    <script src="{% static 'frontend/js/custom/logged.js' %}" type="text/javascript"></script>
+    <script src="{% static 'frontend/js/custom/base.js' %}" type="text/javascript"></script>
   </body>
 
 </html>
