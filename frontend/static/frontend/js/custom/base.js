@@ -45,6 +45,7 @@ function logged_check(){
       body.style.display = "block";
     }
     else{
+      localStorage.removeItem('m-calendar-token');
       window.location.href = "/login";
     }
     return response.json();

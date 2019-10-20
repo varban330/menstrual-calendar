@@ -1,3 +1,14 @@
+function register_load(){
+  var t = window.localStorage.getItem('m-calendar-token');
+  if(t){
+      window.location.href = "/dashboard";
+  }
+  else{
+    var body = document.getElementById('body')
+    body.style.display = "block";
+  }
+}
+
 function password_validation(){
   var password = document.getElementById("password").value;
   if(password.length < 8){
