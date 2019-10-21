@@ -2,6 +2,11 @@ function load_func(){
   logged_check()
 }
 
+function profile_load_func(){
+  logged_check()
+  fetch_profile()
+}
+
 function logout_func(){
   localStorage.removeItem('m-calendar-token');
   window.location.href = "/login";

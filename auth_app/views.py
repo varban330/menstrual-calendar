@@ -80,8 +80,43 @@ class SuccessLogin(APIView):
 
 
 class UpdateProfile(APIView):
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self,request):
+        try:
+            user = request.user
+            user_profile = UserProfile.objects.filter(user = request.user)[0]
+            content = {
+                "username": user.username,
+                "email": user.email,
+                "fname": user.first_name,
+                "lname": user.last_name,
+                "ctime": user_profile.cycle_time,
+                "ltime": user_profile.lasting_time,
+                "profile_pic": user_profile.profile_pic
+            }
+            code = 200;
+        except:
+            content = {"message": "Fetching Failed"}
+            code = 400
+        return Response(data = content, status = code)
 
     def post(self,request):
-        print(request.data)
-        return Response(data = {"message": "Successful"}, status = 200)
+        try:
+            user = request.user
+            user.first_name = request.data["fname"]
+            user.last_name = request.data["lname"]
+            user.save()
+            user_profile = UserProfile.objects.filter(user = request.user)[0]
+            x = upload_to_cloudinary(request.data['profile'])
+            print(x["url"])
+            user_profile.profile_pic = x["url"]
+            user_profile.cycle_time = request.data["ctime"]
+            user_profile.lasting_time = request.data["ltime"]
+            user_profile.save()
+            content = {"message": "Updation Successful"}
+            code = 200
+        except:
+            content = {"message": "Updation Failed"}
+            code = 400
+        return Response(data = content, status = code)

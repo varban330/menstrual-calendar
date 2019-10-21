@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
 {% block title %}User Profile{% endblock %}
+{% block onloader %}onload="profile_load_func()"{% endblock %}
 {% block profile_active %}active{% endblock %}
 {% block body %}
 <div class="main-panel">
@@ -21,13 +22,13 @@
                   <div class="col-md-5">
                     <div class="form-group">
                       <label class="bmd-label-floating">Username</label>
-                      <input type="text" class="form-control" disabled value="vidushiagarwal1997">
+                      <input type="text" id="username" class="form-control" disabled>
                     </div>
                   </div>
                   <div class="col-md-7">
                     <div class="form-group">
                       <label class="bmd-label-floating">Email address</label>
-                      <input type="email" class="form-control">
+                      <input type="email" id="email" class="form-control" disabled>
                     </div>
                   </div>
                 </div>
@@ -35,13 +36,13 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="bmd-label-floating">First Name</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" id="fname">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="bmd-label-floating">Last Name</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" id="lname">
                     </div>
                   </div>
                 </div>
@@ -49,7 +50,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating">Period Cycle Time (default set to 28)</label>
-                      <input type="number" class="form-control" min = "1" value="28">
+                      <input type="number" class="form-control" min = "1" value="28" id="ctime">
                     </div>
                   </div>
                 </div>
@@ -57,11 +58,11 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating">General Period Duration (default set to 4)</label>
-                      <input type="number" class="form-control" min = "1" value = "4">
+                      <input type="number" class="form-control" min = "1" value = "4" id="ltime">
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                <button type="button" class="btn btn-primary pull-right" onclick="update_profile()" id="update_profile_btn" data_url = "{% url 'update-profile' %}">Update Profile</button>
                 <div class="clearfix"></div>
               </form>
             </div>
@@ -70,9 +71,10 @@
         <div class="col-md-4">
           <div class="card card-profile">
             <div class="card-avatar">
-              <a href="#pablo">
-                <img class="img" src="{% static 'frontend/assets/img/faces/marc.jpg' %}" />
-              </a>
+              <label for="profile-pic">
+                <img class="img" id="picture" src="http://res.cloudinary.com/do8xzkgcs/image/upload/v1571618470/gbvmr9fwrwcz9xp0ycos.png">
+              </label>
+                <input type="file" onchange="previewFile()" style="display:none;" id="profile-pic" accept="image/x-png,image/gif,image/jpeg">
             </div>
             <div class="card-body">
               <h4 class="card-title">Vidushi Agarwal</h4>
