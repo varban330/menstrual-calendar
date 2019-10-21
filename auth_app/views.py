@@ -108,9 +108,10 @@ class UpdateProfile(APIView):
             user.last_name = request.data["lname"]
             user.save()
             user_profile = UserProfile.objects.filter(user = request.user)[0]
-            x = upload_to_cloudinary(request.data['profile'])
-            print(x["url"])
-            user_profile.profile_pic = x["url"]
+            if not request.data['profile'].startswith("http"):
+                x = upload_to_cloudinary(request.data['profile'])
+                print(x["url"])
+                user_profile.profile_pic = x["url"]
             user_profile.cycle_time = request.data["ctime"]
             user_profile.lasting_time = request.data["ltime"]
             user_profile.save()
