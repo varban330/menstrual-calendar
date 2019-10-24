@@ -129,3 +129,26 @@ class UpdateProfile(APIView):
             content = {"message": "Updation Failed"}
             code = 400
         return Response(data = content, status = code)
+
+
+class ProfileCompletion(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self,request):
+        try:
+            value = 57.4
+            user = request.user
+            user_profile = UserProfile.objects.filter(user = request.user)[0]
+            if user.first_name != "":
+                value+=14.2
+            if user.last_name != "":
+                value+=14.2
+            if user_profile.profile_pic != "https://res.cloudinary.com/do8xzkgcs/image/upload/v1571618470/gbvmr9fwrwcz9xp0ycos.png":
+                value+=14.2
+
+            content = {"value": str(value)}
+            code = 200
+        except:
+            content = {"message": "Fetching Failed"}
+            code = 400
+        return Response(data = content, status = code)

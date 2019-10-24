@@ -31,6 +31,8 @@ urlpatterns = [
     path('api/logged-in/', views.SuccessLogin.as_view(), name='logged-in'),
     # /api/profile/
     path('api/profile/', views.UpdateProfile.as_view(), name='update-profile'),
+    # /api/profile-completion/
+    path('api/profile-completion/', views.ProfileCompletion.as_view(), name='update-profile'),
     # Front end urls
     path('', include('frontend.urls')),
 

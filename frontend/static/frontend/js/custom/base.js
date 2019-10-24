@@ -1,5 +1,38 @@
+function profile_completion(){
+  var element = document.getElementById("profile_label")
+  var url = "/api/profile-completion/"
+  var t = window.localStorage.getItem('m-calendar-token');
+  if(t){
+      var token = `Token ${t}`
+  }
+  else{
+    md.showNotification('top','center', 'danger', "Sorry.... Error Loading....")
+    return;
+  }
+
+  fetch(url, {
+    method: "get",
+    credentials: "same-origin",
+    headers: {
+        "Authorization": token,
+    }
+    }).then(function(response) {
+    if(response.status != 200){
+      md.showNotification('top','center', 'danger', "Sorry.... Error Loading....")
+    }
+    return response.json();
+  }).then(function(data) {
+    console.log("Data is ok", data);
+    element.innerHTML = data["value"] + "%"
+  }).catch(function(ex) {
+    console.log("parsing failed", ex);
+    console.log(url)
+  });
+}
+
 function load_func(){
   logged_check()
+  profile_completion()
 }
 
 function profile_load_func(){
