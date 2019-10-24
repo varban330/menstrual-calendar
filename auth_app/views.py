@@ -115,7 +115,15 @@ class UpdateProfile(APIView):
             user_profile.cycle_time = request.data["ctime"]
             user_profile.lasting_time = request.data["ltime"]
             user_profile.save()
-            content = {"message": "Updation Successful"}
+            content = {
+                "username": user.username,
+                "email": user.email,
+                "fname": user.first_name,
+                "lname": user.last_name,
+                "ctime": user_profile.cycle_time,
+                "ltime": user_profile.lasting_time,
+                "profile_pic": user_profile.profile_pic
+            }
             code = 200
         except:
             content = {"message": "Updation Failed"}

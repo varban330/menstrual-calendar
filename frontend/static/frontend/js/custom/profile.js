@@ -1,5 +1,17 @@
 var pic_url = "string"
 
+function setTableData(data){
+  console.log(data)
+  var fname = document.getElementById("fname_label");
+  var lname = document.getElementById("lname_label");
+  var ctime = document.getElementById("cycle_label");
+  var ltime = document.getElementById("duration_label");
+  fname.innerHTML = data["fname"]
+  lname.innerHTML = data["lname"]
+  ltime.innerHTML = data["ltime"]
+  ctime.innerHTML = data["ctime"]
+}
+
 function previewFile() {
   var preview = document.getElementById('picture');
   var file    = document.getElementById('profile-pic').files[0];
@@ -53,6 +65,7 @@ function fetch_profile(){
     ltime.value = data["ltime"]
     ctime.value = data["ctime"]
     fileInput.src = data["profile_pic"]
+    setTableData(data)
     // var cols = document.getElementsByClassName(bmd-label-floating);
     // for(i=0; i<cols.length; i++) {
     //   cols[i].style.top = -1rem;
@@ -130,6 +143,7 @@ function update_profile(){
       return response.json();
     }).then(function(data) {
       console.log("Data is ok", data);
+      setTableData(data);
     }).catch(function(ex) {
       console.log("parsing failed", ex);
       console.log(url)
