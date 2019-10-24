@@ -1,3 +1,13 @@
+document.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("chpwdbtn").click();
+  }
+});
+
 function password_validation(){
   var password = document.getElementById("newpassword").value;
   var btn = document.getElementById("chpwdbtn")
@@ -38,6 +48,11 @@ function change_password(){
     var password = document.getElementById("password").value;
     var newpassword = document.getElementById("newpassword").value;
     var repassword = document.getElementById("repassword").value;
+
+    var button = document.getElementById("chpwdbtn")
+    olderhtml = button.innerHTML
+    button.innerHTML = '<i class="fa fa-circle-o-notch fa-spin"></i>&nbsp;&nbsp;Loading'
+    button.disabled = true
 
     if(password_validation() == false){
       md.showNotification('top','center', 'danger', "Passwords doesn't match requirements");
@@ -95,6 +110,8 @@ function change_password(){
       else{
         md.showNotification('top','center', 'danger', "Incorrect Password Entered")
       }
+      button.innerHTML = olderhtml
+      button.disabled = false
       return response.json();
     }).then(function(data) {
       console.log("Data is ok", data);

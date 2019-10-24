@@ -97,6 +97,10 @@ function update_profile(){
     var ltime = document.getElementById("ltime").value;
     var fileInput = document.getElementById("picture").getAttribute("src");
 
+    var button = document.getElementById("update_profile_btn")
+    olderhtml = button.innerHTML
+    button.innerHTML = '<i class="fa fa-circle-o-notch fa-spin"></i>&nbsp;&nbsp;Loading'
+    button.disabled = true
 // files is a FileList object (similar to NodeList)
     var url = "/api/profile/"
     // var url = document.getElementById("update_profile_btn").getAttribute('data-url');
@@ -150,6 +154,8 @@ function update_profile(){
       else{
         md.showNotification('top','center', 'danger', "Sorry profile could'nt be updated")
       }
+      button.innerHTML = olderhtml
+      button.disabled = false
       return response.json();
     }).then(function(data) {
       console.log("Data is ok", data);

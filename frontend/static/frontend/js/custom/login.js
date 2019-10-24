@@ -24,6 +24,11 @@ function login(){
     var password = document.getElementById("password").value;
 
     var url = document.getElementById("loginbutton").getAttribute('data-url');
+    var button = document.getElementById("loginbutton")
+    olderhtml = button.innerHTML
+    button.innerHTML = '<i class="fa fa-circle-o-notch fa-spin"></i>&nbsp;&nbsp;Wait'
+    button.disabled = true
+
     function getCookie(name) {
       var cookieValue = null;
       if (document.cookie && document.cookie != '') {
@@ -60,6 +65,8 @@ function login(){
       else{
         snackbarfunc("Incorrect Credentials")
       }
+      button.innerHTML = olderhtml
+      button.disabled = false
       return data;
     }).then(function(obj) {
       console.log("Data is ok",obj);

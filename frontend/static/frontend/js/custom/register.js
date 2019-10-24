@@ -58,6 +58,11 @@ function register(){
     var password = document.getElementById("password").value;
     var repassword = document.getElementById("repassword").value;
 
+    var button = document.getElementById("loginbutton")
+    olderhtml = button.innerHTML
+    button.innerHTML = '<i class="fa fa-circle-o-notch fa-spin"></i>&nbsp;&nbsp;Wait'
+    button.disabled = true
+
     if(password_validation() == false){
       snackbarfunc("Passwords doesn't match requirements");
       return
@@ -105,6 +110,8 @@ function register(){
       else{
         snackbarfunc("Fill all Details Correctly")
       }
+      button.innerHTML = olderhtml
+      button.disabled = false
       return response.json();
     }).then(function(data) {
       console.log("Data is ok", data);
