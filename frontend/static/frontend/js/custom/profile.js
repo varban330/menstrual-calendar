@@ -1,3 +1,5 @@
+var pic_url = "string"
+
 function previewFile() {
   var preview = document.getElementById('picture');
   var file    = document.getElementById('profile-pic').files[0];
@@ -132,4 +134,13 @@ function update_profile(){
       console.log("parsing failed", ex);
       console.log(url)
     });
+}
+
+function hover(element) {
+  pic_url = element.getAttribute('src')
+  element.setAttribute('src', 'http://res.cloudinary.com/do8xzkgcs/image/upload/v1571930886/koybp47efnsldn1afztc.png');
+}
+
+function unhover(element) {
+  element.setAttribute('src', pic_url);
 }
