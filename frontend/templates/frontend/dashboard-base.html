@@ -16,9 +16,39 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="{% static 'frontend/assets/css/material-dashboard.css' %}?v=2.1.1" rel="stylesheet">
+    <link href="{% static 'frontend/css/preloader.css' %}" rel="stylesheet">
   </head>
+<body onload="load_func()">
+  <div id="preloader"  style="display: block;">
+    <div id="loading">
+      <div id="loading-center">
+        <div id="loading-center-absolute-one">
+          <div class="object-one"></div>
+          <div class="object-one"></div>
+          <div class="object-one"></div>
+          <div class="object-one"></div>
+          <div class="object-one"></div>
+          <div class="object-one"></div>
+          <div class="object-one"></div>
+          <div class="object-one"></div>
+          <div class="object-one"></div>
+        </div>
+        <div id="loading-center-absolute-two">
+          <div class="object-two"></div>
+          <div class="object-two"></div>
+          <div class="object-two"></div>
+          <div class="object-two"></div>
+          <div class="object-two"></div>
+          <div class="object-two"></div>
+          <div class="object-two"></div>
+          <div class="object-two"></div>
+          <div class="object-two"></div>
+        </div>
+      </div>
 
-  <body id="body" style="display: none;" {% block onloader %}onload="load_func()"{% endblock %}>
+    </div>
+  </div>
+  <div id="body" style="display: none;" >
     <div class="wrapper ">
       <div class="sidebar" data-color="azure" data-background-color="white" data-image="{% static 'frontend/assets/img/sidebar-1.jpg' %}">
         <div class="logo">
@@ -80,6 +110,7 @@
       {% block body %}
       {% endblock %}
     </div>
+  </div>
     <!--   Core JS Files   -->
     <script src="{% static 'frontend/assets/js/core/jquery.min.js' %}"></script>
     <script src="{% static 'frontend/assets/js/core/popper.min.js' %}"></script>

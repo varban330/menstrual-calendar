@@ -48,6 +48,8 @@ function logged_check(){
     if(response.status == 200){
       var body = document.getElementById('body')
       body.style.display = "block";
+      var loader = document.getElementById('preloader')
+      loader.style.display = "none";
     }
     else{
       localStorage.removeItem('m-calendar-token');
