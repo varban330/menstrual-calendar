@@ -56,11 +56,15 @@ function change_password(){
 
     if(password_validation() == false){
       md.showNotification('top','center', 'danger', "Passwords doesn't match requirements");
+      button.innerHTML = olderhtml
+      button.disabled = false
       return
     }
 
     if(passwordcheck() == false){
       md.showNotification('top','center', 'danger', "Passwords don't match");
+      button.innerHTML = olderhtml
+      button.disabled = false
       return
     }
 

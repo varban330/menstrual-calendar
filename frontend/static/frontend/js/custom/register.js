@@ -65,11 +65,15 @@ function register(){
 
     if(password_validation() == false){
       snackbarfunc("Passwords doesn't match requirements");
+      button.innerHTML = olderhtml
+      button.disabled = false
       return
     }
 
     if(passwordcheck() == false){
       snackbarfunc("Passwords don't match");
+      button.innerHTML = olderhtml
+      button.disabled = false
       return
     }
 
