@@ -101,8 +101,13 @@ function profile_load_func(){
 }
 
 function logout_func(){
-  localStorage.removeItem('m-calendar-token');
-  window.location.href = "/login";
+  if (confirm("Are you sure you want to logout?...")) {
+    localStorage.removeItem('m-calendar-token');
+    window.location.href = "/login";
+  }
+  else{
+    return
+  }
 }
 
 function logged_check(){

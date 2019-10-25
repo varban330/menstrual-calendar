@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'auth_app.apps.AuthAppConfig',
     'frontend.apps.FrontendConfig',
     'social_django',
+    'rest_social_auth',
     'widget_tweaks',
     'cloudinary'
 ]

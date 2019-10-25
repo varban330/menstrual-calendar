@@ -33,6 +33,8 @@ urlpatterns = [
     path('api/profile/', views.UpdateProfile.as_view(), name='update-profile'),
     # /api/profile-completion/
     path('api/profile-completion/', views.ProfileCompletion.as_view(), name='update-profile'),
+    # /api/social/login/
+    url('api/social/login/', include('rest_social_auth.urls_token')),
     # Front end urls
     path('', include('frontend.urls')),
 
