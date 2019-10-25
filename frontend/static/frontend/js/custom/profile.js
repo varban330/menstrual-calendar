@@ -29,6 +29,7 @@ function previewFile() {
 
   reader.addEventListener("load", function () {
     preview.src = reader.result;
+    pic_url = reader.result;
   }, false);
 
   if (file) {
