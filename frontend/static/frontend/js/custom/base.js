@@ -4,11 +4,19 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 
 function calendar_builder(){
   var table = document.getElementById("calendar")
+  table.innerHTML = ''
   var today = document.getElementById("today")
-  var month = document.getElementById("thismonth")
+  var month = document.getElementById("month")
+  var year = document.getElementById("year")
   var d = new Date();
   today.innerHTML = 'Today: '+d.getDate()+"/"+(d.getMonth()+1)+"/"+d.getFullYear();
-  month.innerHTML = monthNames[(d.getMonth())]+" "+d.getFullYear();
+  if(month.value == -1 && year.value == 1969){
+    month.value = d.getMonth();
+    year.value = d.getFullYear();
+  }
+  else{
+    d = new Date(year.value,month.value, 1)
+  }
   var date = new Date(d.getFullYear(), d.getMonth(), 01)
   var day = date.getDay()
   var i

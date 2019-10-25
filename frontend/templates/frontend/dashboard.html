@@ -64,7 +64,31 @@
               <p class="card-category" id="today"> View Important Dates</p>
             </div>
             <div class="card-body">
-              <h4 class="card-title" style="text-align: center;"  id="thismonth">Calendar</h4>
+              <!-- <h4 class="card-title" style="text-align: center;"  id="thismonth">Calendar</h4> -->
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="form-group col-md-2">
+                  <select class="form-control" id="month" style="text-align: center;" onchange="calendar_builder()">
+                    <option value="-1">None</option>
+                    <option value="0">January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <option value="8">September</option>
+                    <option value="9">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                  </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <input type="number" onchange="calendar_builder()" class="form-control" min = "1969" value="1969" max = "9999" id="year">
+                  </div>
+                  <div class="col-md-4"></div>
+                </div>
               <br>
               <div class="table-responsive">
                 <table class="table" id="calendar_table">
@@ -96,7 +120,6 @@
                   <tbody id="calendar">
                   </tbody>
                 </table>
-              </div>
             </div>
           </div>
         </div>

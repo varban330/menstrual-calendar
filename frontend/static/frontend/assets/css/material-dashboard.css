@@ -12,7 +12,7 @@
 =========================================================
 
  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.*/
- 
+
 
 /*     brand Colors              */
 
@@ -2183,7 +2183,7 @@ pre code {
 }
 
 select.form-control:not([size]):not([multiple]) {
-  height: calc(2.4375rem + 2px);
+  height: calc(2.4375rem - 3px);
 }
 
 select.form-control:focus::-ms-value {
