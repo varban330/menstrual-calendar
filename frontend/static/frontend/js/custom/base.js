@@ -1,3 +1,49 @@
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+function calendar_builder(){
+  var table = document.getElementById("calendar")
+  var today = document.getElementById("today")
+  var month = document.getElementById("thismonth")
+  var d = new Date();
+  today.innerHTML = 'Today: '+d.getDate()+"/"+(d.getMonth()+1)+"/"+d.getFullYear();
+  month.innerHTML = monthNames[(d.getMonth())]+" "+d.getFullYear();
+  var date = new Date(d.getFullYear(), d.getMonth(), 01)
+  var day = date.getDay()
+  var i
+  var row = table.insertRow(0);
+  var z=-(day) + 1;
+  for(i=0; i<day; i++){
+    var cell = row.insertCell(i);
+    cell.innerHTML ='<i>' + new Date(d.getFullYear(), d.getMonth(), z).getDate() + '</i>';
+    z++;
+  }
+  var k = 0;
+  for(i=1; i<=new Date(d.getFullYear(), d.getMonth()+1, 0).getDate();i++){
+    var y = new Date(d.getFullYear(), d.getMonth(), i)
+    x = y.getDay()
+    if(x==6){
+      cell = row.insertCell(x)
+      cell.innerHTML = '<b>' + y.getDate() + '</b>'
+      k=k+1;
+      row = table.insertRow(k);
+    }
+    else{
+      cell = row.insertCell(x)
+      cell.innerHTML ='<b>' + y.getDate() + '</b>'
+    }
+    cell.classList.add("text-primary")
+  }
+  var v = new Date(d.getFullYear(), d.getMonth()+1, 0).getDay()
+  var l = 1;
+  for(i=v+1; i<=6;i++){
+    cell = row.insertCell(i);
+    cell.innerHTML = '<i>' + l + '</i>';
+    l=l+1;
+  }
+}
+
 function profile_completion(){
   var element = document.getElementById("profile_label")
   var url = "/api/profile-completion/"
@@ -31,6 +77,7 @@ function profile_completion(){
 }
 
 function load_func(){
+  calendar_builder()
   logged_check()
   profile_completion()
 }
