@@ -76,8 +76,13 @@ function profile_completion(){
   });
 }
 
-function load_func(){
+function dashboard_load_func(){
   calendar_builder()
+  logged_check()
+  profile_completion()
+}
+
+function other_load_func(){
   logged_check()
   profile_completion()
 }
