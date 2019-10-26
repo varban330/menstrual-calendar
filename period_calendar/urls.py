@@ -34,7 +34,9 @@ urlpatterns = [
     # /api/profile-completion/
     path('api/profile-completion/', views.ProfileCompletion.as_view(), name='update-profile'),
     # /api/social/
-    url('api/social/', include('social_django.urls', namespace = 'social')),
+    path('api/social/', include('social_django.urls', namespace = 'social')),
+    # /api/social-register/
+    # /api/social-login/
     # Front end urls
     path('', include('frontend.urls')),
 
