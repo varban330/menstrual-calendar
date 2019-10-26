@@ -36,7 +36,9 @@ urlpatterns = [
     # /api/social/
     path('api/social/', include('social_django.urls', namespace = 'social')),
     # /api/social-register/
+    path('api/social-register/', views.GoogleRegister.as_view(), name='google-register'),
     # /api/social-login/
+    path('api/social-login/', views.GoogleLogin.as_view(), name='google-login'),
     # Front end urls
     path('', include('frontend.urls')),
 

@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .models import UserProfile
 from rest_framework_expiring_authtoken import views as rviews
-from .functions import upload_to_cloudinary
+from .functions import upload_to_cloudinary, validate_google_token
 # Create your views here.
 
 class LoginView(APIView):
@@ -152,3 +152,60 @@ class ProfileCompletion(APIView):
             content = {"message": "Fetching Failed"}
             code = 400
         return Response(data = content, status = code)
+
+
+class GoogleRegister(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self,request):
+        try:
+            if validate_google_token(request.data['id_token']):
+                user = User()
+                username = request.data['email']
+                request.data["username"] = ''.join(e for e in string if e.isalnum())
+                user.username = request.data["username"]
+                user.email = request.data['email']
+                user.first_name = request.data['f_name']
+                user.last_name = request.data['l_name']
+                pwd = "qpalzmqp"
+                request.data["password"] = pwd
+                user.set_password(pwd)
+                user.save()
+                user_profile = UserProfile()
+                user_profile.user = user
+                user_profile.profile_pic = request.data["img_url"]
+                user_profile.save()
+                string = "Registration Successful"
+                x = LoginView()
+                content = x.post(request).data
+                content["message"] = string
+                code = x.post(request).status_code
+            else:
+                string = "Invalid Google ID"
+                code = 400
+                content = {'message': string}
+        except Exception as e:
+            string = "Sorry Registration could not be done"
+            code = 400
+            content = {'message': string}
+        return Response(data=content, status = code)
+
+
+class GoogleLogin(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self,request):
+        if validate_google_token(request.data['id_token']):
+            x = rviews.ObtainExpiringAuthToken()
+            if x.post(request).status_code == 200:
+                token = x.post(request).data["token"]
+                code = 200
+                content = {'token': token}
+            else:
+                content = x.post(request).data
+                code = x.post(request).status_code
+        else:
+            string = "Invalid Google ID"
+            code = 400
+            content = {'message': string}
+        return Response(data=content, status = code)
