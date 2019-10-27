@@ -86,7 +86,7 @@ class SuccessLogin(APIView):
                     "message": "Successful",
                     "google": user_profile.google_login
                   }
-        return Response(data = , status = 200)
+        return Response(data = content, status = 200)
 
 
 class UpdateProfile(APIView):
