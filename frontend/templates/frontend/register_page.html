@@ -8,6 +8,9 @@
     <title>Dr. Pink - Sign Up</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="607848625587-ts150js5ijmrao95jd72k1jm88v1jj32.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -70,7 +73,9 @@
                 </div>
               </div>
               <div class="footer text-center">
-                <a href="#pablo" class="btn btn-danger btn-wd btn-lg">Sign Up with &nbsp;<i class="fa fa-google-plus"></i></a>
+                <div class="btn btn-info">
+                  <div onclick = "onSignIn()" class="g-signin2 text" data-border="0 0 0 0" data-width="100" data-height="30" data-theme='dark' data-onsuccess="onSignIn"></div>
+                </div>
                 <a onclick="register()" data-url = "{% url 'register' %}" id = "loginbutton" class="btn btn-success btn-wd btn-lg">Register</a>
               </div>
             </form>

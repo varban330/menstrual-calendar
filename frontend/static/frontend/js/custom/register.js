@@ -9,6 +9,8 @@ document.addEventListener("keyup", function(event) {
 });
 
 function register_load(){
+  var list = document.getElementsByTagName("span")
+  list[9].innerHTML = "Sign Up"
   var t = window.localStorage.getItem('m-calendar-token');
   if(t){
       window.location.href = "/dashboard";
