@@ -162,7 +162,7 @@ class GoogleRegister(APIView):
             if validate_google_token(request.data['id_token']):
                 user = User()
                 username = request.data['email']
-                request.data["username"] = ''.join(e for e in string if e.isalnum())
+                request.data["username"] = ''.join(e for e in username if e.isalnum())
                 user.username = request.data["username"]
                 user.email = request.data['email']
                 user.first_name = request.data['f_name']
@@ -197,6 +197,10 @@ class GoogleLogin(APIView):
     def post(self,request):
         if validate_google_token(request.data['id_token']):
             x = rviews.ObtainExpiringAuthToken()
+            username = request.data['email']
+            request.data["username"] = ''.join(e for e in username if e.isalnum())
+            pwd = "qpalzmqp"
+            request.data["password"] = pwd
             if x.post(request).status_code == 200:
                 token = x.post(request).data["token"]
                 code = 200
