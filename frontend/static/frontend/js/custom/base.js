@@ -103,7 +103,7 @@ function profile_load_func(){
 function logout_func(){
   if (confirm("Are you sure you want to logout?...")) {
     localStorage.removeItem('m-calendar-token');
-    // signOut();
+    signOut();
     window.location.href = "/login";
   }
   else{

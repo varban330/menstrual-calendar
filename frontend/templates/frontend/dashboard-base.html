@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="607848625587-ts150js5ijmrao95jd72k1jm88v1jj32.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <title>
       {% block title %}Wait{% endblock %}
     </title>
@@ -22,6 +21,13 @@
     <link href="{% static 'frontend/css/preloader.css' %}" rel="stylesheet">
   </head>
 <body {% block onloader %}onload="other_load_func()"{% endblock %}>
+  <script type="text/javascript">
+  function onLoad() {
+    gapi.load('auth2', function() {
+      gapi.auth2.init();
+    });
+  }
+  </script>
   <div id="preloader"  style="display: block;">
     <div id="loading">
       <div id="loading-center">
@@ -114,6 +120,7 @@
       {% endblock %}
     </div>
   </div>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <!--   Core JS Files   -->
     <script src="{% static 'frontend/assets/js/core/jquery.min.js' %}"></script>
     <script src="{% static 'frontend/assets/js/core/popper.min.js' %}"></script>
@@ -152,13 +159,6 @@
   <script src="{% static 'frontend/assets/js/material-dashboard.js' %}?v=2.1.1" type="text/javascript"></script>
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-  <script type="text/javascript">
-  function onLoad() {
-    gapi.load('auth2', function() {
-      gapi.auth2.init();
-    });
-  }
-  </script>
     <script>
       $(document).ready(function() {
         $().ready(function() {
