@@ -56,7 +56,7 @@ class ChangePwd(APIView):
             try:
                 username = request.user.username
                 user_profile = UserProfile.objects.filter(user = request.user)[0]
-                if user_profile.google_login == True:
+                if user_profile.google_login != True:
                     password = request.data["password"]
                     user = authenticate(username = username, password = password)
                     if user is not None:
