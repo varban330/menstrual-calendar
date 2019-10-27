@@ -9,20 +9,68 @@ document.addEventListener("keyup", function(event) {
   }
 });
 
-function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
+function onSignIn(googleUser){
+    var profile = googleUser.getBasicProfile();
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID: " + profile.getId());
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+    console.log("ID Token: " + id_token);
 
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
+    myData = {
+      email:profile.getEmail(),
+      id_token: id_token
+    };
+
+    var url = "/api/social-login/"
+
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie != '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = jQuery.trim(cookies[i]);
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
       }
+      return cookieValue;
+    }
+
+    fetch(url, {
+      method: "post",
+      credentials: "same-origin",
+      headers: {
+          "X-CSRFToken": getCookie("csrftoken"),
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(myData)
+    }).then(function(response) {
+      if(response.status == 200){
+        snackbarfunc("Registration Successful")
+      }
+      else{
+        snackbarfunc("Fill all Details Correctly")
+      }
+      return response.json();
+    }).then(function(data) {
+      console.log("Data is ok", data);
+      if("token" in data){
+        window.localStorage.setItem('m-calendar-token', data.token);
+        window.location.href = "/dashboard";
+      }
+    }).catch(function(ex) {
+      console.log("parsing failed", ex);
+      console.log(url)
+    });
+}
 
 function login_load(){
   var t = window.localStorage.getItem('m-calendar-token');
