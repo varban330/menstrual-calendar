@@ -100,6 +100,16 @@ function profile_load_func(){
   fetch_profile()
 }
 
+function normal_logout(){
+  if (confirm("Are you sure you want to logout?...")) {
+    localStorage.removeItem('m-calendar-token');
+    window.location.href = "/login";
+  }
+  else{
+    return
+  }
+}
+
 function logout_func(){
   if (confirm("Are you sure you want to logout?...")) {
     localStorage.removeItem('m-calendar-token');
@@ -165,6 +175,10 @@ function logged_check(){
   }).then(function(data) {
     console.log("Data is ok", data);
     if(data["google"] == true){
+      var c = document.getElementById("normal_logout")
+      c.style.display = "none";
+      var k = document.getElementById("google_logout")
+      k.style.display = "block";
       var r = document.getElementById("chpwdnav")
       r.style.display = "none";
     }
