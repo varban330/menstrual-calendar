@@ -31,13 +31,6 @@ function signOut() {
 function onSignIn(googleUser){
     var profile = googleUser.getBasicProfile();
     var id_token = googleUser.getAuthResponse().id_token;
-    console.log("ID: " + profile.getId());
-    console.log('Full Name: ' + profile.getName());
-    console.log('Given Name: ' + profile.getGivenName());
-    console.log('Family Name: ' + profile.getFamilyName());
-    console.log("Image URL: " + profile.getImageUrl());
-    console.log("Email: " + profile.getEmail());
-    console.log("ID Token: " + id_token);
 
     myData = {
       email:profile.getEmail(),
@@ -79,7 +72,7 @@ function onSignIn(googleUser){
         snackbarfunc("Registration Successful")
       }
       else{
-        snackbarfunc("Fill all Details Correctly")
+        snackbarfunc("Account already registered... Pls Login")
         signOut();
       }
       return response.json();
