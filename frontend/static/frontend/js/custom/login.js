@@ -54,10 +54,10 @@ function onSignIn(googleUser){
       body: JSON.stringify(myData)
     }).then(function(response) {
       if(response.status == 200){
-        snackbarfunc("Registration Successful")
+        snackbarfunc("Login Successful")
       }
       else{
-        snackbarfunc("Fill all Details Correctly")
+        snackbarfunc("Error Logging In")
       }
       return response.json();
     }).then(function(data) {
