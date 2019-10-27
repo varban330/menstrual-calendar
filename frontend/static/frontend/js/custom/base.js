@@ -164,6 +164,10 @@ function logged_check(){
     return response.json();
   }).then(function(data) {
     console.log("Data is ok", data);
+    if(data["google"] == true){
+      var r = document.getElementById("chpwdnav")
+      r.style.display = "none";
+    }
   }).catch(function(ex) {
     console.log("parsing failed", ex);
     console.log(url)

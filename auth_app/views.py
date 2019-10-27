@@ -55,17 +55,22 @@ class ChangePwd(APIView):
     def post(self, request):
             try:
                 username = request.user.username
-                password = request.data["password"]
-                user = authenticate(username = username, password = password)
-                if user is not None:
-                    pwd = request.data['new_password']
-                    user.set_password(pwd)
-                    user.save()
-                    content = {"message: Password Changed Successfully"}
-                    code = 200
+                user_profile = UserProfile.objects.filter(user = request.user)[0]
+                if user_profile.google_login == True:
+                    password = request.data["password"]
+                    user = authenticate(username = username, password = password)
+                    if user is not None:
+                        pwd = request.data['new_password']
+                        user.set_password(pwd)
+                        user.save()
+                        content = {"message: Password Changed Successfully"}
+                        code = 200
+                    else:
+                        content = {"message: Incorrect Password"}
+                        code = 401
                 else:
-                    content = {"message: Incorrect Password"}
-                    code = 401
+                    content = {"message: Google Login... Can't Change Password"}
+                    code = 400
             except:
                 content = {"message: Some Error Occured"}
                 code = 500
@@ -76,7 +81,12 @@ class SuccessLogin(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self,request):
-        return Response(data = {"message": "Successful"}, status = 200)
+        user_profile = UserProfile.objects.filter(user = request.user)[0]
+        content = {
+                    "message": "Successful",
+                    "google": user_profile.google_login
+                  }
+        return Response(data = , status = 200)
 
 
 class UpdateProfile(APIView):
@@ -86,8 +96,11 @@ class UpdateProfile(APIView):
         try:
             user = request.user
             user_profile = UserProfile.objects.filter(user = request.user)[0]
+            username = user.username
+            if user_profile.google_login == True:
+                username = user.email
             content = {
-                "username": user.username,
+                "username": username,
                 "email": user.email,
                 "fname": user.first_name,
                 "lname": user.last_name,
@@ -174,6 +187,7 @@ class GoogleRegister(APIView):
                 user_profile = UserProfile()
                 user_profile.user = user
                 user_profile.profile_pic = request.data["img_url"]
+                user_profile.google_login = True
                 user_profile.save()
                 string = "Registration Successful"
                 x = LoginView()
