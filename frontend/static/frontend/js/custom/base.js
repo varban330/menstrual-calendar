@@ -103,12 +103,20 @@ function profile_load_func(){
 function logout_func(){
   if (confirm("Are you sure you want to logout?...")) {
     localStorage.removeItem('m-calendar-token');
+    signOut();
     window.location.href = "/login";
   }
   else{
     return
   }
 }
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
 
 function logged_check(){
   var url = "/api/logged-in/";
