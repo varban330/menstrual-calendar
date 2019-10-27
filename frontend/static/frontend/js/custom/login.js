@@ -58,6 +58,7 @@ function onSignIn(googleUser){
       }
       else{
         snackbarfunc("Error Logging In")
+        signOut()
       }
       return response.json();
     }).then(function(data) {
