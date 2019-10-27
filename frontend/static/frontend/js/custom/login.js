@@ -9,9 +9,9 @@ document.addEventListener("keyup", function(event) {
   }
 });
 
-// function googlesignin(){
-//   document.getElementById("gbutton").click();
-// }
+function googlesignin(){
+  document.getElementById("gbutton").click();
+}
 
 function onSignIn(googleUser) {
         // Useful data for your client-side scripts:

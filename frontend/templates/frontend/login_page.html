@@ -57,8 +57,10 @@
                 </div>
               </div>
               <div class="footer text-center">
-                <div class="g-signin2" id="gbutton" data-onsuccess="onSignIn"></div>
-                <!-- <a onclick = "googlesignin()" class="btn btn-danger btn-wd btn-lg">Sign In with &nbsp;<i class="fa fa-google-plus"></i></a> -->
+                <!-- <div class="g-signin2" data-left="20%" id="gbutton" data-onsuccess="onSignIn"></div> -->
+                <div class="btn btn-info">
+                  <div onclick = "onSignIn()" class="g-signin2 text" data-width="100" data-height="30" data-theme='dark' data-onsuccess="onSignIn"></div>
+                </div>
                 <a onclick="login()" data-url = "{% url 'login' %}" id="loginbutton" class="btn btn-success btn-wd btn-lg">Let's Go...</a>
               </div>
             </form>
