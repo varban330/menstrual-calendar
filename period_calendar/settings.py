@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework_expiring_authtoken',
     'corsheaders',
     'auth_app.apps.AuthAppConfig',
+    'period_app.apps.PeriodAppConfig',
     'frontend.apps.FrontendConfig',
     'social_django',
     'rest_social_auth',

@@ -41,5 +41,7 @@ urlpatterns = [
     path('api/social-login/', views.GoogleLogin.as_view(), name='google-login'),
     # Front end urls
     path('', include('frontend.urls')),
+    # Period urls
+    path('period/', include('period_app.urls')),
 
 ]
